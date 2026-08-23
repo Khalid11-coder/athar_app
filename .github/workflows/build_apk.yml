@@ -31,6 +31,22 @@ jobs:
           echo "Generating clean Android scaffold..."
           flutter create . --org sa.athar --project-name athar_app --platforms android
 
+      - name: 🌐 Ensure Android Internet Permissions
+        run: |
+          python3 -c "
+          import os
+          manifest_path = 'android/app/src/main/AndroidManifest.xml'
+          if os.path.exists(manifest_path):
+              with open(manifest_path, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              if 'android.permission.INTERNET' not in content:
+                  permissions = '    <uses-permission android:name=\"android.permission.INTERNET\"/>\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>\n\n'
+                  content = content.replace('<application ', permissions + '    <application android:usesCleartextTraffic=\"true\" ', 1)
+                  with open(manifest_path, 'w', encoding='utf-8') as f:
+                      f.write(content)
+                  print('Internet permissions injected successfully.')
+          "
+
       - name: 📦 Get Dependencies
         run: flutter pub get
 
