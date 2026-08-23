@@ -86,7 +86,7 @@ class MapLandmarkModel {
         mapY: 0.72,
         distance: '3.1 كم',
         address: 'شارع الهجرة، قباء',
-        icon: Icons.temple_buddhist_rounded,
+        icon: Icons.location_city_rounded,
         pinColor: const Color(0xFF2E7D32),
         tour: tours[1],
       ),
