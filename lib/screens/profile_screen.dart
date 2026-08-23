@@ -226,7 +226,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
 
-            const SizedBox(height: 20),
+            // بطاقة التبديل إلى وضع المرشد السياحي
+            Container(
+              margin: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF5E35B1), Color(0xFF7E57C2)],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF5E35B1).withOpacity(0.25),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: const Color(0xFF5E35B1),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AccountTypeScreen()),
+                      );
+                    },
+                    child: Text('تبديل', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12)),
+                  ),
+                  const Spacer(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'لوحة تحكم المرشد السياحي',
+                        style: GoogleFonts.cairo(fontSize: 13.5, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                      Text(
+                        'إدارة الطلبات، الأسعار، والأرباح',
+                        style: GoogleFonts.cairo(fontSize: 10.5, color: Colors.white70),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), shape: BoxShape.circle),
+                    child: const Icon(Icons.school_rounded, color: Colors.white, size: 22),
+                  ),
+                ],
+              ),
+            ),
 
             // قائمة الخيارات - الحساب والمدفوعات
             _buildSectionHeader('الحساب والمدفوعات'),

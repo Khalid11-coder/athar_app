@@ -138,7 +138,68 @@ class GuideProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 12),
+
+              // 3.5 بطاقة التبديل إلى وضع السائح
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 6),
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFFF6F00), Color(0xFFFFA000)],
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFFFF6F00).withOpacity(0.25),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: const Color(0xFFFF6F00),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const AccountTypeScreen()),
+                        );
+                      },
+                      child: Text('تبديل', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12)),
+                    ),
+                    const Spacer(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'تصفح التطبيق كـ سائح / زائر',
+                          style: GoogleFonts.cairo(fontSize: 13.5, fontWeight: FontWeight.bold, color: Colors.white),
+                        ),
+                        Text(
+                          'استكشاف الجولات، التذاكر، والخريطة',
+                          style: GoogleFonts.cairo(fontSize: 10.5, color: Colors.white70),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 10),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), shape: BoxShape.circle),
+                      child: const Icon(Icons.explore_rounded, color: Colors.white, size: 22),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
 
               // 4. قائمة الخيارات والإعدادات
               Container(
